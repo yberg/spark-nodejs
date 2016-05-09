@@ -1,0 +1,20 @@
+extends layout
+
+block content
+  .card
+    .card-header
+      h3 Posts
+    .card-body
+      .input
+        form#search
+          input(type="text", name="user")
+          button
+            i.glyphicon.glyphicon-search
+            |  Search
+    .list
+      a(href="#").list-item
+        h4 Post 1
+      a(href="#").list-item
+        h4 Post 2
+      a(href="#").list-item
+        h4 Post 3
