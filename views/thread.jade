@@ -7,13 +7,59 @@ block content
     .card-body
       .input
         form#search
-          input(type="text", name="user", autocomplete="off")
+          input(type="text", name="user", autocomplete="off", placeholder="Search...")
           button
             i.glyphicon.glyphicon-search
-            |  Search
     .list
-      - var colors = ['none', 'blue', 'green', 'red', 'yellow'];
+      //.list-item.list-item-small.list-item-gray.t1_1
+        .list-item-body
+          h5 Tjena 1
+          a(href="#") t1_1
+        .list-item.list-item-small.list-item-gray.t3_4
+          .list-item-body
+            h5 Tjena 4
+            a(href="#") t1_4
+          .list-item.list-item-small.list-item-gray.t3_3
+            .list-item-body
+              h5 Tjena 3
+              a(href="#") t1_3
+        .list-item.list-item-small.list-item-gray.t3_5
+          .list-item-body
+            h5 Tjena 5
+            a(href="#") t1_5
+      //.list-item.list-item-small.list-item-gray.t1_2
+        .list-item-body
+          h5 Tjena 2
+          a(href="#") t1_2
+      //.list-item.list-item-small.list-item-gray.t1_3
+        .list-item-body
+          h5 Tjena 3
+          a(href="#") t1_3
+
+      - var colors = ['gray', 'blue', 'green', 'red', 'yellow'];
+      - var children = Array();
       each result, i in results
-        .list-item.list-item-small(class="list-item-#{colors[i%5]}")
-          h5 #{result.body}
-          a(href="/u/#{result.author}") #{result.author}
+        //if result.parent_id === result.link_id
+        .list-item.list-item-small(class="list-item-#{colors[0]} #{result.name}")
+          .list-item-body
+            h5 #{result.body}
+            a(href="/u/#{result.author}") #{result.author}
+            p #{result.id} #{result.name} #{result.parent_id} #{result.link_id}
+        //else
+          - children.push(result);
+      //script.
+        var children = !{JSON.stringify(children)};
+        var el;
+        children.forEach(function(child) {
+          el = document.getElementsByClassName('.' + child.parent_id);
+          if (el.length === 1) {
+            console.log("asdabnsdiuasbndiuasbdiuasbdiasudbiausdbasiudbasiduabsdiuasbduasd");
+            el[0].innerHTML +=
+              '<div class="list-item list-item-small list-item-gray ' + child.link_id + '">' +
+                '<div class="list-item-body">' +
+                  '<h5>' + child.body + '</h5>' +
+                  '<a href="/u/' + child.author + '">' + child.author + '</a>' +
+                '</div>' +
+              '</div>';
+          }
+        });

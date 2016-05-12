@@ -12,8 +12,9 @@ block content
             i.glyphicon.glyphicon-search
             |  Search
     .list
-      - var colors = ['none', 'blue', 'green', 'red', 'yellow'];
+      - var colors = ['gray', 'blue', 'green', 'red', 'yellow'];
       each result, i in results
-        .list-item.list-item-small(class="list-item-#{colors[i%5]}")
-          h5 #{result.body}
-          p x comments
+        .list-item.list-item-small(class="list-item-#{colors[0]}")
+          .list-item-body
+            h5 #{result.body}
+            p x comments

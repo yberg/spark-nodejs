@@ -2,7 +2,7 @@
 @import 'mixins.scss';
 
 * {
-
+  box-sizing: border-box !important;
 }
 
 body {
@@ -49,25 +49,32 @@ div.card {
   .list-item {
     display: block;
     background: white;
-    padding: 10px 30px;
+    padding: 0px 10px;
     &:not(:first-child) {
       border-top: 1px solid $border;
     }
     &:hover {
       background: $light
     }
-    .title {
+    .list-item-header {
       text-decoration: none;
+    }
+    .list-item-body {
+      padding: 10px 20px;
     }
     p {
       color: $dark-gray;
+      margin: 0;
     }
   }
   .list-item-small {
     h5 {
       margin-top: 0;
-      margin-bottom: 5px;
+      margin-bottom: 2px;
     }
+  }
+  .list-item-gray {
+    border-left: 4px solid $gray;
   }
   .list-item-blue {
     border-left: 4px solid $blue;
@@ -94,15 +101,23 @@ div.card {
   input {
     position: relative;
     display: table-cell;
+    background: $light;
     float: left;
     width: 250px;
     height: inherit;
     padding: 8px 10px;
     font-size: 14px;
-    border: 1px solid $border;
+    border: 1px solid transparent;
     @include inset-shadow;
     outline: none;
     border-radius: 2px;
+    &:hover {
+      border: 1px solid $border;
+    }
+    &:focus {
+      background: white;
+      border: 1px solid $border;
+    }
     &:not(:last-child) {
       border-top-right-radius: 0;
       border-bottom-right-radius: 0;

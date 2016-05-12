@@ -1,3 +1,6 @@
+* {
+  box-sizing: border-box !important; }
+
 body {
   padding: 20px 0;
   background: #FAFAFA; }
@@ -34,18 +37,23 @@ div.card {
   .list .list-item {
     display: block;
     background: white;
-    padding: 10px 30px; }
+    padding: 0px 10px; }
     .list .list-item:not(:first-child) {
       border-top: 1px solid #E0E0E0; }
     .list .list-item:hover {
       background: #F5F5F5; }
-    .list .list-item .title {
+    .list .list-item .list-item-header {
       text-decoration: none; }
+    .list .list-item .list-item-body {
+      padding: 10px 20px; }
     .list .list-item p {
-      color: #757575; }
+      color: #757575;
+      margin: 0; }
   .list .list-item-small h5 {
     margin-top: 0;
-    margin-bottom: 5px; }
+    margin-bottom: 2px; }
+  .list .list-item-gray {
+    border-left: 4px solid #9E9E9E; }
   .list .list-item-blue {
     border-left: 4px solid #2196F3;
     margin-left: 4px; }
@@ -66,16 +74,22 @@ div.card {
   .input input {
     position: relative;
     display: table-cell;
+    background: #F5F5F5;
     float: left;
     width: 250px;
     height: inherit;
     padding: 8px 10px;
     font-size: 14px;
-    border: 1px solid #E0E0E0;
+    border: 1px solid transparent;
     outline: none;
     border-radius: 2px; }
-    .input input:hover, .input input:focus {
+    .input input:focus {
       box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.08); }
+    .input input:hover {
+      border: 1px solid #E0E0E0; }
+    .input input:focus {
+      background: white;
+      border: 1px solid #E0E0E0; }
     .input input:not(:last-child) {
       border-top-right-radius: 0;
       border-bottom-right-radius: 0; }

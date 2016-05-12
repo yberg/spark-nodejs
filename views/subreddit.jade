@@ -7,11 +7,11 @@ block content
     .card-body
       .input
         form#search
-          input(type="text", name="user", autocomplete="off")
+          input(type="text", name="user", autocomplete="off", placeholder="Search")
           button
             i.glyphicon.glyphicon-search
-            |  Search
     .list
       each result in results
         .list-item
-          a(href="/t/#{result.link_id}").title: h4 #{result.link_id}
+          .list-item-body
+            a(href="/t/#{result.link_id}").title: h4 #{result.link_id}

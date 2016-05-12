@@ -7,12 +7,12 @@ block content
     .card-body
       .input
         form#search
-          input(type="text", name="user", autocomplete="off")
+          input(type="text", name="user", autocomplete="off", placeholder="Search")
           button
             i.glyphicon.glyphicon-search
-            |  Search
     .list
       each result in results
         .list-item
-          a(href="/r/#{result.subreddit}").title: h4 #{result.subreddit}
-          p x comments
+          .list-item-body
+            a(href="/r/#{result.subreddit}").list-item-header: h4 #{result.subreddit}
+            p x comments
