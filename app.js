@@ -6,7 +6,10 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var sass = require('node-sass-middleware');
 
-var routes = require('./routes/index');
+var index = require('./routes/index');
+var subreddit = require('./routes/subreddit');
+var thread = require('./routes/thread');
+var user = require('./routes/user');
 
 var app = express();
 
@@ -32,7 +35,10 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', routes);
+app.use('/', index);
+app.use('/r/', subreddit);
+app.use('/t/', thread);
+app.use('/u/', user);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

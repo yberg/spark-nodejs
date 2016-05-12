@@ -12,7 +12,8 @@ block content
             i.glyphicon.glyphicon-search
             |  Search
     .list
-      each result in results
-        .list-item
-          a(href="/r/#{result.subreddit}").title: h4 #{result.subreddit}
-          p x comments
+      - var colors = ['none', 'blue', 'green', 'red', 'yellow'];
+      each result, i in results
+        .list-item.list-item-small(class="list-item-#{colors[i%5]}")
+          h5 #{result.body}
+          a(href="/u/#{result.author}") #{result.author}

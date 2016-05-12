@@ -22,6 +22,7 @@ div.card {
   border-radius: 2px;
   @include shadow;
   overflow: hidden;
+  margin: 20px 0;
   .card-header {
     background: $light;
     border-bottom: 1px solid $border;
@@ -49,10 +50,40 @@ div.card {
     display: block;
     background: white;
     padding: 10px 30px;
-    text-decoration: none;
     &:not(:first-child) {
       border-top: 1px solid $border;
     }
+    &:hover {
+      background: $light
+    }
+    .title {
+      text-decoration: none;
+    }
+    p {
+      color: $dark-gray;
+    }
+  }
+  .list-item-small {
+    h5 {
+      margin-top: 0;
+      margin-bottom: 5px;
+    }
+  }
+  .list-item-blue {
+    border-left: 4px solid $blue;
+    margin-left: 4px;
+  }
+  .list-item-green {
+    border-left: 4px solid $green;
+    margin-left: 8px;
+  }
+  .list-item-red {
+    border-left: 4px solid $red;
+    margin-left: 12px;
+  }
+  .list-item-yellow {
+    border-left: 4px solid $yellow;
+    margin-left: 16px;
   }
 }
 
@@ -64,6 +95,7 @@ div.card {
     position: relative;
     display: table-cell;
     float: left;
+    width: 250px;
     height: inherit;
     padding: 8px 10px;
     font-size: 14px;

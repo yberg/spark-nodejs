@@ -14,5 +14,4 @@ block content
     .list
       each result in results
         .list-item
-          a(href="/r/#{result.subreddit}").title: h4 #{result.subreddit}
-          p x comments
+          a(href="/t/#{result.link_id}").title: h4 #{result.link_id}
