@@ -2,19 +2,15 @@ extends layout
 
 block content
   .card
-    .card-header
-      h3 Posts
-    .card-body
-      .input
-        form#search
-          input(type="text", name="user", autocomplete="off")
-          button
-            i.glyphicon.glyphicon-search
-            |  Search
+    .card-header: h3 #{user}
+    .card-body: h5 #{results.length + (results.length === 1 ? ' comment' : ' comments')}
     .list
       - var colors = ['gray', 'blue', 'green', 'red', 'yellow'];
       each result, i in results
         .list-item.list-item-small(class="list-item-#{colors[0]}")
           .list-item-body
-            h5 #{result.body}
-            p x comments
+            h5 #{result.body.replace(/\<br>/g, '\n')}
+            a(href="/r/#{result.subreddit}/#{result.link_id}")  #{result.link_id}
+            |  in
+            a(href="/r/#{result.subreddit}")  /r/#{result.subreddit}
+            span.info  #{getDate(result.created_utc)}

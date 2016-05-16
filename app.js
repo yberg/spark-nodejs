@@ -37,7 +37,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
 app.use('/r/', subreddit);
-app.use('/t/', thread);
+app.use('/r/:sub/', thread);
 app.use('/u/', user);
 
 // catch 404 and forward to error handler

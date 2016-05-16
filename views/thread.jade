@@ -2,14 +2,12 @@ extends layout
 
 block content
   .card
-    .card-header
-      h3 Posts
+    .card-header: h3 /t/#{thread}
     .card-body
-      .input
-        form#search
-          input(type="text", name="user", autocomplete="off", placeholder="Search...")
-          button
-            i.glyphicon.glyphicon-search
+      h4.title
+      p.body
+      a.user
+      p.info
     .list
       //.list-item.list-item-small.list-item-gray.t1_1
         .list-item-body
@@ -44,7 +42,7 @@ block content
           .list-item-body
             h5 #{result.body}
             a(href="/u/#{result.author}") #{result.author}
-            p #{result.id} #{result.name} #{result.parent_id} #{result.link_id}
+            span.info  #{getDate(result.created_utc)}
         //else
           - children.push(result);
       //script.
@@ -63,3 +61,23 @@ block content
               '</div>';
           }
         });
+
+  script.
+    (function() {
+      $.ajax({
+        type: 'GET',
+        url: 'https://api.reddit.com/api/info?id=#{thread}',
+        success: function(result) {
+          var data = result.data.children[0].data;
+          console.log(data);
+          $('h3').html(data.title);
+          $('p.body').html(data.selftext);
+          $('a.user').html(data.author).attr('href', '/u/' + data.author);
+          $('p.info').html(" " + getDate(data.created_utc));
+          getNextLinkInfo(i+1);
+        },
+        error: function(result) {
+          console.log("error: " + result);
+        }
+      });
+    })();

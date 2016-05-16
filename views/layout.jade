@@ -5,7 +5,18 @@ html(lang="en")
     title= title
     link(rel="stylesheet", href="/css/bootstrap.min.css")
     link(rel="stylesheet", href="/css/style.css")
-    script(data-main="/js/main", src="/js/require.js")
+    script(src="/js/jquery.min.js")
+    script(src="/js/bootstrap.min.js")
+    script(src="/js/main.js")
+    //script(data-main="/js/main", src="/js/require.js")
+  - function getDate(timestamp) {
+    - var date = new Date(timestamp);
+    - var month = ("0"+(date.getMonth()+1)).substr(-2);
+    - var day = ("0"+date.getDate()).substr(-2);
+    - var hours = ("0"+date.getHours()).substr(-2);
+    - var minutes = ("0"+date.getMinutes()).substr(-2);
+    - return day + "/" + month + " " + hours + ":" + minutes;
+  - }
   body
     .container
       block content

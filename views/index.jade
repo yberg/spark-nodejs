@@ -2,12 +2,11 @@ extends layout
 
 block content
   .card
-    .card-header
-      h3 Posts
+    .card-header: h3 Subreddits
     .card-body
       .input
         form#search
-          input(type="text", name="user", autocomplete="off", placeholder="Search")
+          input(type="text", name="search", autocomplete="off", placeholder="Browse subreddits...")
           button
             i.glyphicon.glyphicon-search
     .list
@@ -15,4 +14,8 @@ block content
         .list-item
           .list-item-body
             a(href="/r/#{result.subreddit}").list-item-header: h4 #{result.subreddit}
-            p x comments
+      if results.length === 0
+        .list-item
+          .list-item-body
+            p 0 results
+

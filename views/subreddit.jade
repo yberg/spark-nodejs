@@ -2,16 +2,52 @@ extends layout
 
 block content
   .card
-    .card-header
-      h3 Posts
+    .card-header: h3 /r/#{subreddit}
     .card-body
-      .input
-        form#search
-          input(type="text", name="user", autocomplete="off", placeholder="Search")
-          button
-            i.glyphicon.glyphicon-search
+      p Unfortunately, thread information is not available in this data set.
+      p Be sure to press the button below to fetch all the link information from the Reddit API.
+      span: button(onclick="getLinkInfo()") Get info
     .list
       each result in results
         .list-item
           .list-item-body
-            a(href="/t/#{result.link_id}").title: h4 #{result.link_id}
+            a.title(href="/r/#{subreddit}/#{result.link_id}", class="#{result.link_id}")
+              h4 #{result.link_id}
+            p.body
+            a.user
+            p.info
+
+  nav: ul.card.page-nav
+    li: a.previous &laquo; Previous
+    li: a(href="#").next Next &raquo;
+
+  script.
+    var elements;
+    function getLinkInfo() {
+      elements = $('.list-item a.title');
+      getNextLinkInfo(0);
+    }
+    function getNextLinkInfo(i) {
+      var el, link_id;
+      if (elements.length <= i)
+        return;
+      el = elements.eq(i);
+      link_id = el.attr('class').split(' ').pop();
+      console.log('https://api.reddit.com/api/info?id=' + link_id);
+      $.ajax({
+        type: 'GET',
+        url: 'https://api.reddit.com/api/info?id=' + link_id,
+        success: function(result) {
+          var data = result.data.children[0].data;
+          console.log(data);
+          el.find('h4').html(data.title);
+          el.siblings('p.body').html(data.selftext);
+          el.siblings('a.user').html(data.author).attr('href', '/u/' + data.author);
+          el.siblings('p.info').html(" " + getDate(data.created_utc));
+          getNextLinkInfo(i+1);
+        },
+        error: function(result) {
+          console.log("error: " + result);
+        }
+      });
+    }

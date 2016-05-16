@@ -2,27 +2,30 @@
   box-sizing: border-box !important; }
 
 body {
-  padding: 20px 0;
+  padding: 30px 0;
   background: #FAFAFA; }
 
 a {
-  color: #2196F3; }
+  color: #2196F3;
+  text-decoration: none !important;
+  cursor: pointer; }
   a:hover {
     color: #1E88E5; }
 
-div.card {
+.card {
+  display: block;
   background: white;
   border-radius: 2px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   overflow: hidden;
-  margin: 20px 0; }
-  div.card .card-header {
+  margin: 10px 0; }
+  .card .card-header {
     background: #F5F5F5;
     border-bottom: 1px solid #E0E0E0;
     padding: 10px 20px; }
-  div.card .card-body {
+  .card .card-body {
     padding: 20px; }
-    div.card .card-body:not(:last-child) {
+    .card .card-body:not(:last-child) {
       border-bottom: 1px solid #E0E0E0; }
 
 .list {
@@ -42,13 +45,12 @@ div.card {
       border-top: 1px solid #E0E0E0; }
     .list .list-item:hover {
       background: #F5F5F5; }
-    .list .list-item .list-item-header {
-      text-decoration: none; }
     .list .list-item .list-item-body {
-      padding: 10px 20px; }
+      padding: 15px 20px; }
     .list .list-item p {
       color: #757575;
-      margin: 0; }
+      margin-top: 0;
+      margin-bottom: 3px; }
   .list .list-item-small h5 {
     margin-top: 0;
     margin-bottom: 2px; }
@@ -67,51 +69,79 @@ div.card {
     border-left: 4px solid #FFEB3B;
     margin-left: 16px; }
 
+.info {
+  display: inline;
+  color: #9E9E9E; }
+
 .input {
   position: relative;
   display: table;
   height: 40px; }
-  .input input {
-    position: relative;
-    display: table-cell;
-    background: #F5F5F5;
-    float: left;
-    width: 250px;
-    height: inherit;
-    padding: 8px 10px;
-    font-size: 14px;
-    border: 1px solid transparent;
-    outline: none;
-    border-radius: 2px; }
-    .input input:focus {
-      box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.08); }
-    .input input:hover {
-      border: 1px solid #E0E0E0; }
-    .input input:focus {
-      background: white;
-      border: 1px solid #E0E0E0; }
-    .input input:not(:last-child) {
-      border-top-right-radius: 0;
-      border-bottom-right-radius: 0; }
-  .input button {
-    position: relative;
-    display: table-cell;
-    height: inherit;
-    padding: 8px 10px;
-    background: #1E88E5;
-    font-size: 14px;
-    border: 1px solid #1E88E5;
-    color: white;
-    vertical-align: middle;
-    outline: none;
-    border-radius: 2px; }
-    .input button:not(:last-child) {
-      border-top-right-radius: 0;
-      border-bottom-right-radius: 0; }
-    .input button:not(:first-child) {
-      border-top-left-radius: 0;
-      border-bottom-left-radius: 0; }
-    .input button:hover {
-      background: #2196F3; }
-    .input button:active {
-      background: #42A5F5; }
+
+input {
+  position: relative;
+  display: table-cell;
+  background: #F5F5F5;
+  float: left;
+  width: 250px;
+  height: inherit;
+  padding: 8px 10px;
+  font-size: 14px;
+  border: 1px solid transparent;
+  outline: none;
+  border-radius: 2px; }
+  input:focus {
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.08); }
+  input:hover {
+    border: 1px solid #E0E0E0; }
+  input:focus {
+    background: white;
+    border: 1px solid #E0E0E0; }
+  input:not(:last-child) {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0; }
+
+button {
+  position: relative;
+  display: table-cell;
+  height: inherit;
+  padding: 8px 10px;
+  background: #1E88E5;
+  font-size: 14px;
+  border: 1px solid #1E88E5;
+  color: white;
+  vertical-align: middle;
+  outline: none;
+  border-radius: 2px; }
+  button:not(:last-child) {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0; }
+  button:not(:first-child) {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0; }
+  button:hover {
+    background: #2196F3; }
+  button:active {
+    background: #42A5F5; }
+
+.page-nav {
+  padding: 0;
+  margin: 0;
+  display: inline-block;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); }
+  .page-nav:hover {
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23); }
+  .page-nav li {
+    display: inline;
+    list-style-type: none; }
+    .page-nav li:not(:last-child) {
+      border-right: 1px solid #E0E0E0; }
+    .page-nav li a {
+      display: inline-block;
+      padding: 10px 10px; }
+      .page-nav li a:hover {
+        background: #F5F5F5; }
+    .page-nav li.disabled a {
+      color: #9E9E9E;
+      cursor: default; }

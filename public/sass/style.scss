@@ -6,23 +6,26 @@
 }
 
 body {
-  padding: 20px 0;
+  padding: 30px 0;
   background: $bg
 }
 
 a {
   color: $blue;
+  text-decoration: none !important;
+  cursor: pointer;
   &:hover {
     color: $dark-blue;
   }
 }
 
-div.card {
+.card {
+  display: block;
   background: white;
   border-radius: 2px;
   @include shadow;
   overflow: hidden;
-  margin: 20px 0;
+  margin: 10px 0;
   .card-header {
     background: $light;
     border-bottom: 1px solid $border;
@@ -56,15 +59,13 @@ div.card {
     &:hover {
       background: $light
     }
-    .list-item-header {
-      text-decoration: none;
-    }
     .list-item-body {
-      padding: 10px 20px;
+      padding: 15px 20px;
     }
     p {
       color: $dark-gray;
-      margin: 0;
+      margin-top: 0;
+      margin-bottom: 3px;
     }
   }
   .list-item-small {
@@ -94,60 +95,91 @@ div.card {
   }
 }
 
+.info {
+  display: inline;
+  color: $gray;
+}
+
 .input {
   position: relative;
   display: table;
   height: 40px;
-  input {
-    position: relative;
-    display: table-cell;
-    background: $light;
-    float: left;
-    width: 250px;
-    height: inherit;
-    padding: 8px 10px;
-    font-size: 14px;
-    border: 1px solid transparent;
-    @include inset-shadow;
-    outline: none;
-    border-radius: 2px;
-    &:hover {
-      border: 1px solid $border;
-    }
-    &:focus {
-      background: white;
-      border: 1px solid $border;
-    }
-    &:not(:last-child) {
-      border-top-right-radius: 0;
-      border-bottom-right-radius: 0;
-    }
+}
+
+input {
+  position: relative;
+  display: table-cell;
+  background: $light;
+  float: left;
+  width: 250px;
+  height: inherit;
+  padding: 8px 10px;
+  font-size: 14px;
+  border: 1px solid transparent;
+  @include inset-shadow;
+  outline: none;
+  border-radius: 2px;
+  &:hover {
+    border: 1px solid $border;
   }
-  button {
-    position: relative;
-    display: table-cell;
-    height: inherit;
-    padding: 8px 10px;
-    background: $dark-blue;
-    font-size: 14px;
-    border: 1px solid $dark-blue;
-    color: white;
-    vertical-align: middle;
-    outline: none;
-    border-radius: 2px;
+  &:focus {
+    background: white;
+    border: 1px solid $border;
+  }
+  &:not(:last-child) {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+}
+button {
+  position: relative;
+  display: table-cell;
+  height: inherit;
+  padding: 8px 10px;
+  background: $dark-blue;
+  font-size: 14px;
+  border: 1px solid $dark-blue;
+  color: white;
+  vertical-align: middle;
+  outline: none;
+  border-radius: 2px;
+  &:not(:last-child) {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+  &:not(:first-child) {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+  &:hover {
+    background: $blue;
+  }
+  &:active {
+    background: $light-blue;
+  }
+}
+
+.page-nav {
+  padding: 0;
+  margin: 0;
+  display: inline-block;
+  @include shadowHover;
+  li {
+    display: inline;
+    list-style-type: none;
     &:not(:last-child) {
-      border-top-right-radius: 0;
-      border-bottom-right-radius: 0;
+      border-right: 1px solid $border;
     }
-    &:not(:first-child) {
-      border-top-left-radius: 0;
-      border-bottom-left-radius: 0;
+    a {
+      display: inline-block;
+      padding: 10px 10px;
+      &:hover {
+        background: $light;
+      }
     }
-    &:hover {
-      background: $blue;
-    }
-    &:active {
-      background: $light-blue;
+    &.disabled a {
+      color: $gray;
+      cursor: default;
     }
   }
 }
