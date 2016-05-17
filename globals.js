@@ -1,5 +1,5 @@
 var Globals = {
-  'ip': '192.168.0.109'
+  'ip': '130.237.37.64'
 }
 
 module.exports = Globals;
